@@ -1,0 +1,15 @@
+<h1>All Lists</h1>
+
+<ul class="list-unstyled">
+  <% @list.each do |item| %>
+    <li><div class="card list-group p-3">
+      <%# <%= image_tag movie.poster_url %>
+      <div class="d-flex justify-content-between">
+      <p><%= item.name %></p>
+      <%= link_to "See list", list_path(item), class: "btn btn-primary" %>
+      </div>
+    </div></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a list", new_list_path, class: "btn btn-primary" %>

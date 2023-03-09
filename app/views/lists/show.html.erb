@@ -1,0 +1,18 @@
+<h1>My <%= @list.name %> List</h1>
+
+<ul class="list-unstyled">
+  <% @list.movies.each do |movie| %>
+    <li><div class="card list-group d-flex flex-row mb-3">
+      <div>
+      <%= image_tag movie.poster_url, style: "width: 200px" %>
+      </div>
+      <div class="p-5">
+        <p>Title:<%= movie.title %></p>
+        <p>Overview:<%= movie.overview %></p>
+        <p>Rating:<%= movie.rating %></p>
+      </div>
+    </div></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a movie", new_list_bookmark_path(params[:id]), class: "btn btn-primary" %>
