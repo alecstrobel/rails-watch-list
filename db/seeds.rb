@@ -16,6 +16,10 @@ require 'open-uri'
 
 # Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
 
+Movie.destroy_all
+List.destroy_all
+
+puts "Destroying all movies and lists for seeding..."
 
 data = URI.open('https://tmdb.lewagon.com/movie/top_rated')
 
@@ -26,7 +30,7 @@ movies_list["results"].each do |movie|
   Movie.create(title: movie["title"], overview: movie["overview"], poster_url: "https://image.tmdb.org/t/p/w500/#{movie["poster_path"]}", rating: movie["vote_average"])
 end
 
-puts "Movies seeded successfully!"
+puts "Seeded all movies successfully!"
 
 List.create(name: "Classics")
 List.create(name: "Scary Movies")
@@ -36,3 +40,5 @@ List.create(name: "RomComs")
 List.create(name: "Action Movies")
 List.create(name: "Adventure Movies")
 List.create(name: "Family Movies")
+
+puts "Seeded all lists successfully..."

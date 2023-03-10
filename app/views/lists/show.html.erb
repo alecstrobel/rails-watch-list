@@ -2,14 +2,15 @@
 
 <ul class="list-unstyled">
   <% @list.movies.each do |movie| %>
-    <li><div class="card list-group d-flex flex-row mb-3">
+    <li><div class="card list-group d-flex flex-row mb-3" style="height: 300px">
       <div>
-      <%= image_tag movie.poster_url, style: "width: 200px" %>
+      <%= image_tag movie.poster_url, style: "height: 100%" %>
       </div>
       <div class="p-5">
         <p>Title:<%= movie.title %></p>
         <p>Overview:<%= movie.overview %></p>
         <p>Rating:<%= movie.rating %></p>
+        <%= link_to "Delete from list", bookmark_path(Bookmark.find_by(list: @list, movie: movie)), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
       </div>
     </div></li>
   <% end %>
